@@ -33,6 +33,6 @@ phpunit.phar
 # phpunit cache
 .phpunit.result.cache
 
-# NodeJS
+# NPM
 /node_modules
 package-lock.json

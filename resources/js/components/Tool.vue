@@ -111,6 +111,7 @@ export default {
                 .put(this.apiResourceUrl, Object.fromEntries(formData)) // use JSON to avoid problems with names containing dots ('.')
                 .then(response => {
                     this.fields = response.data.data;
+                    this.validationErrors = new Errors();
 
                     Nova.success(
                         this.__('The settings have been updated!')
@@ -122,8 +123,8 @@ export default {
                     this.isWorking = false;
 
                     if (error.response.status == 422) {
-                        this.validationErrors = new Errors(error.response.data.errors)
-                        Nova.error(this.__('There was a problem submitting the form.'))
+                        this.validationErrors = new Errors(error.response.data.errors);
+                        Nova.error(this.__('There was a problem submitting the form.'));
 
                         return;
                     }
@@ -145,7 +146,7 @@ export default {
 
                     Nova.success(
                         this.__('The settings have been reset to defaults!')
-                    )
+                    );
 
                     this.closeRestoreDefaultsModal();
                     this.isWorking = false;

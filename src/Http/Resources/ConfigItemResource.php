@@ -21,18 +21,24 @@ class ConfigItemResource extends JsonResource
      */
     public function toArray($request): array
     {
-        return array_merge([
-            'attribute' => $this->resource->id,
-            'value' => $this->resource->getValue(),
-            'component' => $this->detectFieldComponent(),
-            'name' => $this->resource->label,
-            'helpText' => $this->resource->hint,
-            'nullable' => in_array('nullable', $this->resource->rules),
-            'readonly' => false,
-            'required' => in_array('required', $this->resource->rules),
-            'textAlign' => 'left',
-            'validationKey' => $this->resource->id,
-        ], (array) $this->resource->options);
+        return array_merge(
+            [
+                'component' => $this->detectFieldComponent(),
+                'name' => $this->resource->label,
+                'helpText' => $this->resource->hint,
+                'nullable' => in_array('nullable', $this->resource->rules),
+                'readonly' => false,
+                'required' => in_array('required', $this->resource->rules),
+                'textAlign' => 'left',
+
+            ],
+            (array) $this->resource->options,
+            [
+                'attribute' => $this->resource->id,
+                'validationKey' => $this->resource->id,
+                'value' => $this->resource->getValue(),
+            ]
+        );
     }
 
     /**

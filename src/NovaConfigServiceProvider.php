@@ -14,6 +14,8 @@ use Laravel\Nova\Nova;
 use Illuminatech\NovaConfig\Http\Middleware\Authorize;
 
 /**
+ * NovaConfigServiceProvider is this package service provider.
+ *
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @since 1.1.5
  */
@@ -29,7 +31,7 @@ class NovaConfigServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../resources/lang/' => resource_path('lang/vendor/illuminatech/nova-config'),
-            ]);
+            ], 'lang');
         }
 
         $this->loadTranslations();
