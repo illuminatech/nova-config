@@ -1,0 +1,41 @@
+{
+    "name": "illuminatech/nova-config",
+    "description": "A Laravel Nova tool for application configuration management.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "config",
+        "settings"
+    ],
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/illuminatech/nova-config/issues",
+        "wiki": "https://github.com/illuminatech/nova-config/wiki",
+        "source": "https://github.com/illuminatech/nova-config"
+    },
+    "authors": [
+        {
+            "name": "Paul Klimov",
+            "email": "klimov.paul@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "illuminatech/config": "^1.2.0",
+        "laravel/nova": ">=2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Illuminatech\\NovaConfig\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Illuminatech\\NovaConfig\\NovaConfigServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
