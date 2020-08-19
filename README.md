@@ -6,7 +6,7 @@
     <br>
 </p>
 
-This extension allows enforcing URL routes with or without trailing slash.
+This extension provides Laravel Nova web interface for the application configuration setup.
 
 For license information check the [LICENSE](LICENSE.md)-file.
 
@@ -43,7 +43,7 @@ It provides a single form for the configuration parameters setup and restore def
 This extension relies on [illuminatech/nova-config](https://github.com/illuminatech/nova-config) package for the actual configuration management.
 Make sure you are familiar with [illuminatech/nova-config](https://github.com/illuminatech/nova-config) package before attempting to use this one.
 
-First of all you need to setup persistent configuration for your application, specifying the particular configuration items,
+First of all, you need to setup persistent configuration for your application, specifying the particular configuration items,
 which should be editable from Nova admin panel. For example:
 
 ```php
@@ -100,7 +100,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 }
 ```
 
-Once it is done the new tool called "Settings" will appear at the Nova sidebar menu, which leads to the configuration setup form.
+Once it is done the new tool called "Settings" will appear at the Nova sidebar menu, leading to the configuration setup form.
 
 
 ### Field Configuration <span id="field-configuration"></span>
