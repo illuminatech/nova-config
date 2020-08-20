@@ -40,8 +40,8 @@ Usage
 This extension provides Laravel Nova web interface for the application configuration setup.
 It provides a single form for the configuration parameters setup and restore defaults feature.
 
-This extension relies on [illuminatech/nova-config](https://github.com/illuminatech/nova-config) package for the actual configuration management.
-Make sure you are familiar with [illuminatech/nova-config](https://github.com/illuminatech/nova-config) package before attempting to use this one.
+This extension relies on [illuminatech/config](https://github.com/illuminatech/config) package for the actual configuration management.
+Make sure you are familiar with [illuminatech/config](https://github.com/illuminatech/config) package before attempting to use this one.
 
 First of all, you need to setup persistent configuration for your application, specifying the particular configuration items,
 which should be editable from Nova admin panel. For example:
