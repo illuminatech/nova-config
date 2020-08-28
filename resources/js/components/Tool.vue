@@ -108,7 +108,7 @@ export default {
             });
 
             Nova.request()
-                .put(this.apiResourceUrl, Object.fromEntries(formData)) // use JSON to avoid problems with names containing dots ('.')
+                .put(this.apiResourceUrl, this.toRawObject(formData)) // use JSON to avoid problems with names containing dots ('.')
                 .then(response => {
                     this.fields = response.data.data;
                     this.validationErrors = new Errors();
@@ -158,7 +158,17 @@ export default {
         },
         closeRestoreDefaultsModal() {
             this.restoreDefaultsModalOpen = false;
-        }
+        },
+        toRawObject(formData) {
+            if (Object.fromEntries) {
+                return Object.fromEntries(formData);
+            }
+
+            let object = {};
+            formData.forEach((value, key) => {object[key] = value});
+
+            return object;
+        },
     }
 }
 </script>

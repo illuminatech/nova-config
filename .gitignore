@@ -36,3 +36,4 @@ phpunit.phar
 # NPM
 /node_modules
 package-lock.json
+yarn.lock
