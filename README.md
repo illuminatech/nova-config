@@ -185,7 +185,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             (new \Illuminatech\NovaConfig\NovaConfig())
-                ->canSee(function($request) {
+                ->canSee(function ($request) {
                     return $request->user(config('nova.guard'))->is_super_admin;
                 }),
             // ...
