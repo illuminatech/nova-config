@@ -9,6 +9,7 @@ namespace Illuminatech\NovaConfig;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminatech\NovaConfig\Http\Resources\ConfigItemResource;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
 use Illuminatech\NovaConfig\Http\Middleware\Authorize;
@@ -28,6 +29,8 @@ class NovaConfigServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        ConfigItemResource::withoutWrapping();
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../resources/lang/' => resource_path('lang/vendor/illuminatech/nova-config'),

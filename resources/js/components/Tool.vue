@@ -85,7 +85,7 @@ export default {
             Nova.request()
                 .get(this.apiResourceUrl)
                 .then(response => {
-                    this.fields = response.data.data;
+                    this.fields = response.data;
                     this.loading = false;
                 })
                 .catch(error => console.error(error));
@@ -110,7 +110,7 @@ export default {
             Nova.request()
                 .put(this.apiResourceUrl, this.toRawObject(formData)) // use JSON to avoid problems with names containing dots ('.')
                 .then(response => {
-                    this.fields = response.data.data;
+                    this.fields = response.data;
                     this.validationErrors = new Errors();
 
                     Nova.success(
@@ -141,7 +141,7 @@ export default {
                     // bypass input values cache :
                     this.fields = [];
                     setTimeout(function (component) {
-                        component.fields = response.data.data;
+                        component.fields = response.data;
                     }, 100, this);
 
                     Nova.success(
