@@ -16,7 +16,7 @@ use Illuminatech\NovaConfig\Http\Resources\ConfigItemCollection;
  * ConfigController handles API request for application configuration management.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 1.1.5
+ * @since 1.0
  */
 class ConfigController extends Controller
 {

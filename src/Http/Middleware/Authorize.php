@@ -12,7 +12,7 @@ use Illuminatech\NovaConfig\NovaConfig;
 
 /**
  * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 1.1.5
+ * @since 1.0
  */
 class Authorize
 {

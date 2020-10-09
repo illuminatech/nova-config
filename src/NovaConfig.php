@@ -16,7 +16,7 @@ use Laravel\Nova\Tool;
  * It should be registered at `\App\Providers\NovaServiceProvider::tools()`.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 1.1.5
+ * @since 1.0
  */
 class NovaConfig extends Tool
 {

@@ -15,6 +15,9 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @see \Illuminatech\NovaConfig\Http\Resources\ConfigItemCollection
  *
  * @property \Illuminatech\Config\Item $resource
+ *
+ * @author Paul Klimov <klimov.paul@gmail.com>
+ * @since 1.0
  */
 class ConfigItemResource extends JsonResource
 {
