@@ -10,7 +10,7 @@ namespace Illuminatech\NovaConfig\Http\Controllers;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminatech\NovaConfig\Http\Resources\ConfigItemResource;
+use Illuminatech\NovaConfig\Http\Resources\ConfigItemCollection;
 
 /**
  * ConfigController handles API request for application configuration management.
@@ -42,7 +42,7 @@ class ConfigController extends Controller
      */
     public function index()
     {
-        return ConfigItemResource::collection($this->config->restore()->getItems());
+        return new ConfigItemCollection($this->config->restore()->getItems());
     }
 
     /**
@@ -57,7 +57,7 @@ class ConfigController extends Controller
 
         $this->config->save($validatedData);
 
-        return ConfigItemResource::collection($this->config->getItems());
+        return new ConfigItemCollection($this->config->getItems());
     }
 
     /**
@@ -69,6 +69,6 @@ class ConfigController extends Controller
     {
         $this->config->reset();
 
-        return ConfigItemResource::collection($this->config->getItems());
+        return new ConfigItemCollection($this->config->getItems());
     }
 }

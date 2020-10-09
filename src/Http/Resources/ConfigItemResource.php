@@ -12,10 +12,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * ConfigItemResource represents config item field configuration.
  *
+ * @see \Illuminatech\NovaConfig\Http\Resources\ConfigItemCollection
+ *
  * @property \Illuminatech\Config\Item $resource
  */
 class ConfigItemResource extends JsonResource
 {
+    /**
+     * {@inheritdoc}
+     */
+    public static $wrap = 'data';
+
     /**
      * {@inheritdoc}
      */
