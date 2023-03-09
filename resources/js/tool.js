@@ -1,3 +1,3 @@
 Nova.booting((Vue, store) => {
-  Nova.inertia('NovaConfig', require('./components/Tool').default)
+  Nova.inertia('IlluminatechNovaConfig', require('./components/Tool').default)
 });

@@ -35,7 +35,7 @@ class NovaConfig extends Tool
      */
     public function menu(Request $request)
     {
-        return MenuSection::make('Settings')
+        return MenuSection::make(__('Settings'))
             ->path('/app-config')
             ->icon('cog');
     }
