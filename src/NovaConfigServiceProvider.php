@@ -61,7 +61,7 @@ class NovaConfigServiceProvider extends ServiceProvider
             ->name('illuminatech.nova-config.')
             ->group(__DIR__ . '/../routes/api.php');
 
-        Nova::router(['nova', Authorize::class], 'nova-config')
+        Nova::router(['nova', Authorize::class], 'app-config')
             ->group(__DIR__ . '/../routes/inertia.php');
     }
 

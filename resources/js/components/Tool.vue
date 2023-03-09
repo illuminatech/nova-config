@@ -12,7 +12,7 @@
       <form
           class="space-y-8"
           @submit="submitConfigForm"
-          :data-form-unique-id="nova-config-form-id"
+          :data-form-unique-id="formUniqueId"
           autocomplete="off"
           ref="form"
       >
@@ -26,9 +26,14 @@
                 v-for="(field, index) in fields"
                 :key="index"
                 :index="index"
-                :is="resolveComponentName(field)"
+                :is="`form-${field.component}`"
                 :errors="validationErrors"
                 :field="field"
+                :resource-id="'main'"
+                :resource-name="'app_config'"
+                :form-unique-id="formUniqueId"
+                :mode="'form'"
+                :show-help-text="true"
             />
           </Card>
         </div>
@@ -62,10 +67,12 @@
 </template>
 
 <script>
+import each from 'lodash/each'
+import tap from 'lodash/tap'
 import {
     Errors,
 } from 'laravel-nova'
-import RestoreDefaultsModal from "./RestoreDefaultsModal";
+import RestoreDefaultsModal from "./RestoreDefaultsModal"
 
 export default {
     components: {
@@ -78,6 +85,7 @@ export default {
         restoreDefaultsModalOpen: false,
         fields: [],
         validationErrors: new Errors(),
+        formUniqueId: 'illuminatech-nova-config-form'
     }),
     created() {
         this.getFields();
@@ -111,8 +119,8 @@ export default {
                 return;
             }
 
-            let formData = _.tap(new FormData(), formData => {
-                _.each(this.fields, field => {
+            let formData = tap(new FormData(), formData => {
+                each(this.fields, field => {
                     field.fill(formData)
                 });
             });
