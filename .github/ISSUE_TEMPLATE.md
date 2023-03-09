@@ -9,7 +9,7 @@
 | Q                         | A
 | ------------------------- | ---
 | This Package Version      | 1.?.?
-| Laravel Framework Version | 7.?.?
-| Laravel Nova Version      | 3.?.?
+| Laravel Framework Version | 10.?.?
+| Laravel Nova Version      | 4.?.?
 | PHP version               | 
 | Operating system          |

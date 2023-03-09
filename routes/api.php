@@ -11,6 +11,6 @@ namespace Illuminatech\NovaConfig\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('config', ConfigController::class.'@index')->name('config.index');
-Route::put('config', ConfigController::class.'@update')->name('config.update');
-Route::delete('config', ConfigController::class.'@reset')->name('config.reset');
+Route::get('config', ConfigController::class . '@index')->name('config.index');
+Route::put('config', ConfigController::class . '@update')->name('config.update');
+Route::delete('config', ConfigController::class . '@reset')->name('config.reset');

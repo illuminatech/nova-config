@@ -7,13 +7,15 @@
 
 namespace Illuminatech\NovaConfig;
 
+use Illuminate\Http\Request;
+use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
 /**
  * NovaConfig defines a Nova tool.
  *
- * It should be registered at `\App\Providers\NovaServiceProvider::tools()`.
+ * It should be registered at {@see \App\Providers\NovaServiceProvider::tools()}.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @since 1.0
@@ -21,22 +23,20 @@ use Laravel\Nova\Tool;
 class NovaConfig extends Tool
 {
     /**
-     * Perform any tasks that need to happen when the tool is booted.
-     *
-     * @return void
+     * {@inheritdoc}
      */
     public function boot()
     {
-        Nova::script('nova-config', __DIR__.'/../dist/js/tool.js');
+        Nova::script('nova-config', __DIR__ . '/../dist/js/tool.js');
     }
 
     /**
-     * Build the view that renders the navigation links for the tool.
-     *
-     * @return \Illuminate\View\View
+     * {@inheritdoc}
      */
-    public function renderNavigation()
+    public function menu(Request $request)
     {
-        return view('nova-config::navigation');
+        return MenuSection::make('Settings')
+            ->path('/nova-config')
+            ->icon('server');
     }
 }
