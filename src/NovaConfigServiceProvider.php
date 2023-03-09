@@ -72,7 +72,6 @@ class NovaConfigServiceProvider extends ServiceProvider
      */
     protected function loadTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'illuminatech/nova-config');
         $this->loadJSONTranslationsFrom(__DIR__ . '/../resources/lang');
         $this->loadJSONTranslationsFrom(resource_path('lang/vendor/illuminatech/nova-config'));
     }
