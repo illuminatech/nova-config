@@ -36,8 +36,6 @@ class NovaConfigServiceProvider extends ServiceProvider
 
         $this->loadTranslations();
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'nova-config');
-
         $this->app->booted(function () {
             $this->routes();
         });
@@ -61,7 +59,10 @@ class NovaConfigServiceProvider extends ServiceProvider
         Route::middleware(['nova', Authorize::class])
             ->prefix('illuminatech/nova-config')
             ->name('illuminatech.nova-config.')
-            ->group(__DIR__.'/../routes/api.php');
+            ->group(__DIR__ . '/../routes/api.php');
+
+        Nova::router(['nova', Authorize::class], 'nova-config')
+            ->group(__DIR__ . '/../routes/inertia.php');
     }
 
     /**
@@ -71,8 +72,8 @@ class NovaConfigServiceProvider extends ServiceProvider
      */
     protected function loadTranslations()
     {
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'illuminatech/nova-config');
-        $this->loadJSONTranslationsFrom(__DIR__.'/../resources/lang');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'illuminatech/nova-config');
+        $this->loadJSONTranslationsFrom(__DIR__ . '/../resources/lang');
         $this->loadJSONTranslationsFrom(resource_path('lang/vendor/illuminatech/nova-config'));
     }
 
@@ -85,7 +86,7 @@ class NovaConfigServiceProvider extends ServiceProvider
     {
         $currentLocale = $this->app->getLocale();
 
-        Nova::translations(__DIR__.'/../resources/lang/'.$currentLocale.'.json');
-        Nova::translations(resource_path('lang/vendor/illuminatech/nova-config/'.$currentLocale.'.json'));
+        Nova::translations(__DIR__ . '/../resources/lang/' . $currentLocale . '.json');
+        Nova::translations(resource_path('lang/vendor/illuminatech/nova-config/' . $currentLocale . '.json'));
     }
 }

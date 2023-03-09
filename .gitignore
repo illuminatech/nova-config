@@ -17,6 +17,9 @@ Thumbs.db
 
 /composer.lock
 
+# composer saved auth
+/auth.json
+
 # composer itself is not needed
 composer.phar
 

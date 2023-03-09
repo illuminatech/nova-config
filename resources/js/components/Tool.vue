@@ -1,62 +1,64 @@
 <template>
-    <div>
-        <loading-view :loading="loading">
-            <portal
-                to="modals"
-                v-if="restoreDefaultsModalOpen"
-            >
-                <restore-defaults-modal
-                    @confirm="resetConfigDefaults"
-                    @close="closeRestoreDefaultsModal"
-                >
-                </restore-defaults-modal>
-            </portal>
+  <div>
+    <LoadingView :loading="loading">
+      <Head :title="__('Settings')" />
+      <RestoreDefaultsModal
+          :show="restoreDefaultsModalOpen"
+          @confirm="resetConfigDefaults"
+          @close="closeRestoreDefaultsModal"
+      >
+      </RestoreDefaultsModal>
 
-            <form
-                @submit="submitConfigForm"
-                autocomplete="off"
-                ref="form"
-            >
-                <div class="mb-8">
-                    <heading class="mb-6">{{ __('Settings') }}</heading>
+      <form
+          class="space-y-8"
+          @submit="submitConfigForm"
+          :data-form-unique-id="nova-config-form-id"
+          autocomplete="off"
+          ref="form"
+      >
+        <div class="space-y-4">
+          <Heading :level="1">{{ __('Settings') }}</Heading>
 
-                    <card>
-                    <component
-                        :class="{
-                          'remove-bottom-border': index == fields.length - 1,
-                        }"
-                        v-for="(field, index) in fields"
-                        :key="index"
-                        :is="`form-${field.component}`"
-                        :errors="validationErrors"
-                        :field="field"
-                    />
-                    </card>
-                </div>
+          <Card
+              class="divide-y divide-gray-100 dark:divide-gray-700"
+          >
+            <component
+                v-for="(field, index) in fields"
+                :key="index"
+                :index="index"
+                :is="resolveComponentName(field)"
+                :errors="validationErrors"
+                :field="field"
+            />
+          </Card>
+        </div>
 
-                <div class="flex items-center">
-                    <div class="ml-auto"></div>
-                    <button
-                        type="button"
-                        class="btn btn-default btn-danger inline-flex items-center relative mr-3"
-                        dusk="defaults-button"
-                        @click="openRestoreDefaultsModal"
-                        :disabled="isWorking"
-                    >
-                        <span class="">{{ __('Restore Defaults') }}</span>
-                    </button>
+        <div
+            class="flex flex-col md:flex-row md:items-center justify-center md:justify-end space-y-2 md:space-y-0 space-x-3"
+        >
+          <LoadingButton
+              dusk="defaults-button"
+              component="DangerButton"
+              type="button"
+              @click="openRestoreDefaultsModal"
+              :disabled="isWorking"
+              :loading="loading"
+          >
+            {{ __('Restore Defaults') }}
+          </LoadingButton>
 
-                    <progress-button
-                        dusk="save-button"
-                        type="submit"
-                        :disabled="isWorking"
-                    >
-                        {{ __('Save') }}
-                    </progress-button>
-                </div>
-            </form>
-        </loading-view>
-    </div>
+          <LoadingButton
+              dusk="save-button"
+              type="submit"
+              :disabled="isWorking"
+              :loading="loading"
+          >
+            {{ __('Save') }}
+          </LoadingButton>
+        </div>
+      </form>
+    </LoadingView>
+  </div>
 </template>
 
 <script>
@@ -81,7 +83,15 @@ export default {
         this.getFields();
     },
     methods: {
-        getFields() {
+      /**
+       * Resolve the component name.
+       */
+      resolveComponentName(field) {
+        return field.prefixComponent
+            ? 'detail-' + field.component
+            : field.component
+      },
+      getFields() {
             Nova.request()
                 .get(this.apiResourceUrl)
                 .then(response => {

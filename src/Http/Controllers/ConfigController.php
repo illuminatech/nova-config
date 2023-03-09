@@ -8,9 +8,9 @@
 namespace Illuminatech\NovaConfig\Http\Controllers;
 
 use Illuminate\Contracts\Container\Container;
-use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminatech\NovaConfig\Http\Resources\ConfigItemCollection;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 /**
  * ConfigController handles API request for application configuration management.
@@ -48,10 +48,10 @@ class ConfigController extends Controller
     /**
      * Updates app configuration.
      *
-     * @param  \Illuminate\Http\Request  $request HTTP request instance.
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request HTTP request instance.
      * @return mixed response.
      */
-    public function update(Request $request)
+    public function update(NovaRequest $request)
     {
         $validatedData = $this->config->validate($request->all());
 

@@ -1,63 +1,79 @@
 <template>
-    <modal @modal-close="handleClose">
-        <form
-            @submit.prevent="handleConfirm"
-            class="bg-white rounded-lg shadow-lg overflow-hidden"
-            style="width: 460px;"
-        >
-            <div class="p-8">
-                <heading :level="2" class="mb-6">
-                    {{ __('Restore Defaults') }}
-                </heading>
-                <p class="text-80 leading-normal">
-                    {{ __('Are you sure you want to restore default values?') }}
-                </p>
-            </div>
+  <Modal data-testid="config-restore-defaults-modal"
+         :show="show"
+         role="alertdialog"
+         size="sm"
+  >
+    <form
+      @submit.prevent="handleConfirm"
+      class="mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
+    >
+      <slot>
+        <ModalHeader v-text="__('Restore Defaults')" />
+        <ModalContent>
+          <p class="leading-normal">
+            {{ __('Are you sure you want to restore default values?') }}
+          </p>
+        </ModalContent>
+      </slot>
 
-            <div class="bg-30 px-6 py-3 flex">
-                <div class="ml-auto">
-                    <button
-                        type="button"
-                        data-testid="cancel-button"
-                        dusk="cancel-delete-button"
-                        @click.prevent="handleClose"
-                        class="btn text-80 font-normal h-9 px-3 mr-3 btn-link"
-                    >
-                        {{ __('Cancel') }}
-                    </button>
+      <ModalFooter>
+        <div class="ml-auto">
+          <LinkButton
+              type="button"
+              data-testid="cancel-button"
+              dusk="cancel-delete-button"
+              @click.prevent="handleClose"
+              class="mr-3"
+          >
+            {{ __('Cancel') }}
+          </LinkButton>
 
-                    <button
-                        id="confirm-delete-button"
-                        ref="confirmButton"
-                        data-testid="confirm-button"
-                        type="submit"
-                        class="btn btn-default btn-danger"
-                    >
-                        {{ __('Restore Defaults') }}
-                    </button>
-                </div>
-            </div>
-        </form>
-    </modal>
+          <LoadingButton
+              ref="confirmButton"
+              dusk="confirm-delete-button"
+              :processing="working"
+              :disabled="working"
+              component="DangerButton"
+              type="submit"
+          >
+            {{ __('Restore Defaults') }}
+          </LoadingButton>
+        </div>
+      </ModalFooter>
+    </form>
+  </Modal>
 </template>
 
 <script>
-    export default {
-        methods: {
-            handleClose() {
-                this.$emit('close')
-            },
+export default {
+  emits: ['confirm', 'close'],
 
-            handleConfirm() {
-                this.$emit('confirm')
-            },
-        },
+  props: {
+    show: { type: Boolean, default: false },
+  },
 
-        /**
-         * Mount the component.
-         */
-        mounted() {
-            this.$refs.confirmButton.focus()
-        },
-    }
+  data: () => ({
+    working: false,
+  }),
+
+  methods: {
+    handleClose() {
+      this.$emit('close')
+      this.working = false
+    },
+
+    handleConfirm() {
+      this.$emit('confirm')
+      this.working = true
+    },
+  },
+
+  /**
+   * Mount the component.
+   */
+  mounted() {
+    this.$refs.confirmButton.focus()
+  },
+}
 </script>

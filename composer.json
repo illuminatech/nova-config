@@ -20,10 +20,16 @@
         }
     ],
     "require": {
-        "php": ">=7.1.0",
-        "illuminatech/config": "^1.2.0",
-        "laravel/nova": ">=2.0.0"
+        "php": ">=7.3.0",
+        "illuminatech/config": "^1.3.0",
+        "laravel/nova": ">=4.0.0"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Illuminatech\\NovaConfig\\": "src/"
