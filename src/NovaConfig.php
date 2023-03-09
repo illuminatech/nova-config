@@ -27,7 +27,7 @@ class NovaConfig extends Tool
      */
     public function boot()
     {
-        Nova::script('nova-config', __DIR__ . '/../dist/js/tool.js');
+        Nova::script('illuminatech-nova-config', __DIR__ . '/../dist/js/tool.js');
     }
 
     /**
@@ -36,7 +36,7 @@ class NovaConfig extends Tool
     public function menu(Request $request)
     {
         return MenuSection::make('Settings')
-            ->path('/nova-config')
-            ->icon('server');
+            ->path('/app-config')
+            ->icon('cog');
     }
 }

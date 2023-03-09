@@ -40,13 +40,28 @@ class ConfigItemResource extends JsonResource
                 'readonly' => false,
                 'required' => in_array('required', $this->resource->rules),
                 'textAlign' => 'left',
-
+                'visible' => true,
+                'dependsOn' => null,
+                'displayedAs' => null,
+                'fullWidth' => false,
+                'indexName' => $this->resource->label,
+                'panel' => 'Default',
+                'placeholder' => null,
+                'prefixComponent' => false,
+                'sortable' => true,
+                'sortableUriKey' => $this->resource->id,
+                'stacked' => false,
+                'usesCustomizedDisplay' => false,
+                'wrapping' => false,
+                'suggestions' => null,
+                'dependentComponentKey' => null,
             ],
             (array) $this->resource->options,
             [
                 'attribute' => $this->resource->id,
                 'validationKey' => $this->resource->id,
                 'value' => $this->resource->getValue(),
+                'uniqueKey' => $this->resource->id . '-config-field',
             ]
         );
     }
