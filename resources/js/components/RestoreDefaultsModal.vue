@@ -73,7 +73,7 @@ export default {
    * Mount the component.
    */
   mounted() {
-    this.$refs.confirmButton.focus()
+    //this.$refs.confirmButton.focus()
   },
 }
 </script>
