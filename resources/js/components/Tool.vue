@@ -91,14 +91,6 @@ export default {
         this.getFields();
     },
     methods: {
-      /**
-       * Resolve the component name.
-       */
-      resolveComponentName(field) {
-        return field.prefixComponent
-            ? 'detail-' + field.component
-            : field.component
-      },
       getFields() {
             Nova.request()
                 .get(this.apiResourceUrl)
