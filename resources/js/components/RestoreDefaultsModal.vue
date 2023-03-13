@@ -1,8 +1,8 @@
 <template>
   <Modal data-testid="config-restore-defaults-modal"
-         :show="show"
-         role="alertdialog"
-         size="sm"
+    :show="show"
+    role="alertdialog"
+    size="sm"
   >
     <form
       @submit.prevent="handleConfirm"
@@ -20,22 +20,22 @@
       <ModalFooter>
         <div class="ml-auto">
           <LinkButton
-              type="button"
-              data-testid="cancel-button"
-              dusk="cancel-delete-button"
-              @click.prevent="handleClose"
-              class="mr-3"
+            type="button"
+            data-testid="cancel-button"
+            dusk="cancel-delete-button"
+            @click.prevent="handleClose"
+            class="mr-3"
           >
             {{ __('Cancel') }}
           </LinkButton>
 
           <LoadingButton
-              ref="confirmButton"
-              dusk="confirm-delete-button"
-              :processing="working"
-              :disabled="working"
-              component="DangerButton"
-              type="submit"
+            ref="confirmButton"
+            dusk="confirm-delete-button"
+            :processing="working"
+            :disabled="working"
+            component="DangerButton"
+            type="submit"
           >
             {{ __('Restore Defaults') }}
           </LoadingButton>
@@ -65,7 +65,7 @@ export default {
 
     handleConfirm() {
       this.$emit('confirm')
-      this.working = true
+      this.working = false
     },
   },
 
