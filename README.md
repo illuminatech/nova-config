@@ -79,6 +79,21 @@ class PersistentConfigServiceProvider extends AbstractPersistentConfigServicePro
 }
 ```
 
+Do not forget to register your persistent config service provider in "providers" section at "config/app.php":
+
+```php
+<?php
+
+return [
+    // ...
+    'providers' => [
+        // ...
+        App\Providers\PersistentConfigServiceProvider::class,
+    ],
+    // ...
+];
+```
+
 Next, you should register the `\Illuminatech\NovaConfig\NovaConfig` tool within Nova at your `NovaServiceProvider`:
 
 ```php
