@@ -8,7 +8,7 @@
 
 | Q                         | A
 | ------------------------- | ---
-| This Package Version      | 1.?.?
+| This Package Version      | 2.?.?
 | Laravel Framework Version | 10.?.?
 | Laravel Nova Version      | 4.?.?
 | PHP version               | 

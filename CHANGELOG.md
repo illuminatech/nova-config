@@ -1,8 +1,8 @@
 Laravel Nova Application Config Tool
 ====================================
 
-2.0.0 Under Development
------------------------
+2.0.0, March 14, 2023
+---------------------
 
 - Enh #3: Provided support for "laravel/nova" version 4.x (klimov-paul)
 
